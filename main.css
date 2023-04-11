@@ -5,29 +5,42 @@
 }
 
 .main-container {
-    background-color: aqua;
     width: 40vw;
-    height: 100vh;
+    height: 75vh;
+    background-color: aqua;
+}
+
+.header {
+    width: 40vw;
+    height: 25vh;
+    background-color: blanchedalmond;
+    contain: content;
 }
 
 .task-container {
-    background-color: blanchedalmond;
     width: 36vw;
     height: auto;
     margin-left: 2vw;
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 8em;
     margin-left: 1vw;
+    margin-top: 1vh;
     font-weight: bold;
+    animation-name: headlineani;
+    animation-duration: 1s;
+}
+
+@keyframes headlineani {
+    from {margin-top: -10vh;}
+    to {margin-top: 1vh;}
 }
 
 .task {
-    background-color: aquamarine;
     height: auto;
     padding: 1vh;
-    border-bottom: 0.1vh solid blue;
+    border-bottom: 0.05vh solid blue;
     contain: content;
 }
 

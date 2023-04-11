@@ -24,6 +24,8 @@ function removeThisTask() {
     tasks.splice(tasks.indexOf(this.parentElement.firstChild.innerText),1);
     localStorage.clear();
     localStorage.tasks = JSON.stringify(tasks);
+    console.log(this.parentElement);
+    taskContainer.removeChild(this.parentElement);
 }
 
 function updateTaskList(text) {
@@ -50,29 +52,10 @@ function updateTaskList(text) {
     removeTask.onclick = removeThisTask;
 }
 
+// function to restore the task list based on local storage
 function addTasksOnLoad() {
         for (let task of tasks) {
-            const taskEntry = document.createElement('div');
-            taskEntry.classList.add('task');
-
-            const taskDescription = document.createElement('p');
-            taskDescription.classList.add('task-description');
-            taskDescription.innerText = task;
-
-            const taskCheck = document.createElement('input');
-            taskCheck.setAttribute('type','checkbox');
-            taskCheck.classList.add('done-task-check');
-
-            const removeTask = document.createElement('button');
-            removeTask.classList.add('remove-task-button');
-            removeTask.innerText = 'remove';
-
-            taskEntry.appendChild(taskDescription);
-            taskEntry.appendChild(taskCheck);
-            taskEntry.appendChild(removeTask);
-            taskContainer.appendChild(taskEntry);
-
-            removeTask.onclick = removeThisTask;
+            updateTaskList(task);
     }
 }
 
