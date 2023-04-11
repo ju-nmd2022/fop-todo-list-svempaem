@@ -1,11 +1,54 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .main-container {
     background-color: aqua;
     width: 40vw;
     height: 100vh;
+}
 
+.task-container {
+    background-color: blanchedalmond;
+    width: 36vw;
+    height: auto;
+    margin-left: 2vw;
+}
+
+h1 {
+    font-size: 5em;
+    margin-left: 1vw;
+    font-weight: bold;
+}
+
+.task {
+    background-color: aquamarine;
+    height: auto;
+    padding: 1vh;
+    border-bottom: 0.1vh solid blue;
+    contain: content;
+}
+
+.done-task-check,.remove-task-button {
+    position: absolute;
+    top: 1.5vh;
+}
+
+.done-task-check {
+    right: 3vw;
+}
+
+.remove-task-button {
+    right: 2vw;
+}
+
+.task-description {
+    font-size: 1.2em;
+}
+
+.add-task-textbox {
+    margin-top: 2vh;
+    margin-left: 2vw;
 }
