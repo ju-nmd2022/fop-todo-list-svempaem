@@ -1,6 +1,7 @@
 const taskContainer = document.getElementById('taskContainer');
 const addTaskTextbox = document.getElementById('addTaskTextbox');
 const addTaskButton = document.getElementById('addTaskButton');
+const removeAutomaticallyCheck = document.getElementById('removeAutomaticallyCheck');
 
 let tasks;
 let checkedTasks;
@@ -23,11 +24,13 @@ function updateChecks() {
     if (this.checked) {
         checkedTasks.splice(tasks.indexOf(this.parentElement.firstChild.innerText),1,true);
         localStorage.checkedTasks = JSON.stringify(checkedTasks);
+        this.parentElement.firstChild.style.color = 'green';
     }
     else {
         checkedTasks.splice(tasks.indexOf(this.parentElement.firstChild.innerText),1,false);
-        localStorage.removeItem(checkedTasks);
+        localStorage.removeItem('checkedTasks');
         localStorage.checkedTasks = JSON.stringify(checkedTasks);
+        this.parentElement.firstChild.style.color = 'red';
     }
 }
 
@@ -47,14 +50,22 @@ function submitInput() {
         updateTaskList(addTaskTextbox.value);
         addTaskTextbox.value = '';
         localStorage.tasks = JSON.stringify(tasks);
+
+        checkedTasks.push(false);
+        localStorage.checkedTasks = JSON.stringify(checkedTasks);
     }    
 }
 
 function removeThisTask() {
+    checkedTasks.splice(tasks.indexOf(this.parentElement.firstChild.innerText),1);
+    console.log(checkedTasks);
+    localStorage.removeItem('checkedTasks');
+    localStorage.checkedTasks = JSON.stringify(checkedTasks);
+
     tasks.splice(tasks.indexOf(this.parentElement.firstChild.innerText),1);
     localStorage.removeItem('tasks');
     localStorage.tasks = JSON.stringify(tasks);
-    console.log(this.parentElement);
+
     taskContainer.removeChild(this.parentElement);
 }
 
@@ -72,11 +83,12 @@ function updateTaskList(text) {
     taskCheck.setAttribute('id','taskCheck' + tasks.indexOf(text));
     if (checkedTasks[tasks.indexOf(text)] === true) {
         taskCheck.setAttribute('checked','checked');
+        taskDescription.style.color = 'green';
     }
 
-    const removeTask = document.createElement('button');
+    const removeTask = document.createElement('img');
+    removeTask.setAttribute('src','img/removetask.svg');
     removeTask.classList.add('remove-task-button');
-    removeTask.innerText = 'remove';
 
     taskEntry.appendChild(taskDescription);
     taskEntry.appendChild(taskCheck);
@@ -85,8 +97,6 @@ function updateTaskList(text) {
 
     removeTask.onclick = removeThisTask;
     taskCheck.onclick = updateChecks;
-
-    checkedTasks.push(false);
 }
 
 // function to restore the task list based on local storage

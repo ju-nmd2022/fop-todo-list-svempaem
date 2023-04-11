@@ -5,31 +5,32 @@
 }
 
 .main-container {
-    width: 40vw;
+    width: 100vw;
     height: 80vh;
-    background-color: aqua;
+    contain: content;
 }
 
 .header {
-    width: 40vw;
+    width: 100vw;
     height: 20vh;
-    background-color: blanchedalmond;
     contain: content;
 }
 
 .task-container {
-    width: 36vw;
+    width: 33vw;
     height: auto;
-    max-height: 40vh;
-    margin-left: 2vw;
+    max-height: 50vh;
+    margin-left: 30vw;
     contain: content;
     overflow-y: scroll;
+    position: absolute;
+    top: 2vh;
 }
 
 h1 {
     font-size: 8em;
-    margin-left: 1vw;
-    margin-top: 1vh;
+    margin-left: 28vw;
+    margin-top: 2vh;
     font-weight: bold;
     animation-name: headlineani;
     animation-duration: 1s;
@@ -37,14 +38,22 @@ h1 {
 
 @keyframes headlineani {
     from {margin-top: -10vh;}
-    to {margin-top: 1vh;}
+    to {margin-top: 2vh;}
 }
 
 .task {
     height: auto;
     padding: 1vh;
-    border-bottom: 0.05vh solid blue;
+    border-bottom: 0.05vh solid rgb(187, 187, 187);
     contain: content;
+    animation-name: taskani;
+    animation-duration: 1s;
+    color: red;
+}
+
+@keyframes taskani {
+    from {opacity: 0;}
+    to {opacity: 100;}
 }
 
 .done-task-check,.remove-task-button {
@@ -53,18 +62,50 @@ h1 {
 }
 
 .done-task-check {
-    right: 4vw;
+    right: 3vw;
+    top: 1.65vh;
 }
 
 .remove-task-button {
     right: 1vw;
+    width: 1vw;
 }
 
 .task-description {
     font-size: 1.2em;
+    font-weight: lighter;
+}
+
+.add-task-container {
+    padding: 0.5vw;
+    width: 29vw;
+    height: auto;
+    contain: content;
+    position: absolute;
+    top: 2vh;
+    left: 64vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;    
 }
 
 .add-task-textbox {
-    margin-top: 2vh;
-    margin-left: 2vw;
+    padding: 0.5vw;
+    width: 11vw;
+    height: 2.2vh;
+    border-radius: 20px;
+    border: 0.2vh solid rgb(187, 187, 187);
+}
+
+.add-task-button {
+    width: 4vw;
+    height: auto;
+}
+
+.footer {
+    background-color: red;
+    width: 65vw;
+    height: 5vh;
+    position: absolute;
+    bottom: 0;
+    left: 35vw;
 }
