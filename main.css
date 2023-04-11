@@ -6,13 +6,13 @@
 
 .main-container {
     width: 40vw;
-    height: 75vh;
+    height: 80vh;
     background-color: aqua;
 }
 
 .header {
     width: 40vw;
-    height: 25vh;
+    height: 20vh;
     background-color: blanchedalmond;
     contain: content;
 }
@@ -20,7 +20,10 @@
 .task-container {
     width: 36vw;
     height: auto;
+    max-height: 40vh;
     margin-left: 2vw;
+    contain: content;
+    overflow-y: scroll;
 }
 
 h1 {
