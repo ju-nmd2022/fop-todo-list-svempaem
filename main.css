@@ -2,3 +2,10 @@
     margin: 0;
     padding: 0;
 }
+
+.main-container {
+    background-color: aqua;
+    width: 40vw;
+    height: 100vh;
+
+}
